@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.Thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ✅ Same Flexbox Layout as Login Page */
+        .container-box {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .left-section, .right-section {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-section {
+            background: #fff;
+            padding: 60px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px 0 0 15px;
+        }
+
+        .right-section {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+            padding: 60px;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-title {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            width: 100%;
+            transition: 0.3s ease-in-out;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+        }
+
+        .back-to-login {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .back-to-login a {
+            color: #ff416c;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media (max-width: 992px) {
+            .container-box {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Full-Width Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="images/Avi.png" alt="Logo" width="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+                <a href="login" class="btn btn-danger">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ✅ Forget Password Page Layout -->
+    <div class="container-box">
+        <!-- ✅ Left Section: Forget Password Form -->
+        <div class="left-section">
+            <div class="form-box">
+            <p th:text="${succMsg}" class="text-success">
+            <p th:text="${errMsg}" class="text-danger">
+                <h4 class="form-title mb-4">Reset Your Password</h4>
+                <form th:action="@{/forgotPwd}" method="post">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
+                    </div>
+                    <input type="submit" value="Submit" class="btn submit-btn"/>
+                </form>
+                <div class="back-to-login">
+                    Remembered your password? <a href="login">Go to Login</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ✅ Right Section: Info/Gradient -->
+        <div class="right-section">
+            <div>
+                <h2>Password Recovery</h2>
+                <p>Enter your email, and we'll send you a link to reset your password.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
